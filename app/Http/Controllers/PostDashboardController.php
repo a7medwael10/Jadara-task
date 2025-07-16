@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,7 +39,9 @@ class PostDashboardController extends Controller
             $data['image'] = $request->file('image')->store('posts_images', 'public');
         }
 
-        $data['user_id'] = 2;
+        $user = User::inRandomOrder()->first();
+
+        $data['user_id'] = $user->id;
 
         $post = Post::create($data);
 
