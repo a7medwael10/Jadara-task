@@ -38,6 +38,8 @@ class PostDashboardController extends Controller
             $data['image'] = $request->file('image')->store('posts_images', 'public');
         }
 
+        $data['user_id'] = 2;
+
         $post = Post::create($data);
 
         return response()->json([
