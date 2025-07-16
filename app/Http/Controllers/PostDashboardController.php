@@ -35,7 +35,7 @@ class PostDashboardController extends Controller
 
         $data = $request->only('title', 'body');
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('posts', 'public');
+            $data['image'] = $request->file('image')->store('posts_images', 'public');
         }
 
         $post = Post::create($data);

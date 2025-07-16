@@ -33,6 +33,7 @@ class SendCodeJob implements ShouldQueue
      */
     public function handle(): void
     {
+        // Update or create the verification code in the database
         VerificationCode::updateOrCreate(
             ['email' => $this->email],
             [
@@ -41,6 +42,7 @@ class SendCodeJob implements ShouldQueue
             ]
         );
 
+        // Send the verification code via email
         Mail::to($this->email)->send(new SendCodeMail($this->code, $this->email));
 
     }

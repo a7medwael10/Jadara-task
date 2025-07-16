@@ -62,6 +62,7 @@ class AuthController extends Controller
             return $this->errorResponse([], 'Please verify your email before logging in.', 403);
         }
         $user = auth()->user();
+        // generate a new token for the user
         $token = $user->createToken('auth_token')->plainTextToken;
         return $this->successResponse(
             [

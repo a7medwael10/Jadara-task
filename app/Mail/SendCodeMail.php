@@ -40,6 +40,7 @@ class SendCodeMail extends Mailable implements ShouldQueue
      */
     public function content(): Content
     {
+        // email view at resources/views/emails/code.blade.php
         return new Content(
             view: 'emails.code',
             with: [
